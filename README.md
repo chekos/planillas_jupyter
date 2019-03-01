@@ -10,39 +10,57 @@ Hasta ahora hay 3 planillas:
 Debajo el ejemplo de la planilla de Visualizaciones donde ya tenemos escrito el código para importar `altair` y el esqueleto de 2 gráficos.
 
 
-# 02 Visualizaciones: [NOMBRE_DEL_PROYECTO]
+# 00 Exploración: [NOMBRE_DEL_PROJECTO]
 
-Gráficos por hacer:
-1. <br>
-2. <br>
-3. <br>
+##### Metas:
+1. Identificar características. 
+2. Familiarizarse con los detalles de los datos
+  - dtypes
+  - tamaño del dataset
+3. ETC
+
+##### Cambios:
+* fecha_del_ultimo_cambio: Descripción del cambio.
+* otro cambio: otra descripción.
 
 ***
 __Preparación__
 
 
 ```python
-import altair as alt
 import pandas as pd
-from IPython.core.interactiveshell import InteractiveShell
-
-# Esto te permite exhibir más de un OUTPUT por cell
-InteractiveShell.ast_node_interactivity = "all"
+from pathlib import Path
+from datetime import datetime
 ```
 
 
 ```python
-archivo = "../data/NOMBRE_DEL_DATASET.csv"
+# Inicializa rutas hacia los archivos.
+fecha_hoy = datetime.today()
+archivos_en_bruto = Path("../datos/en_bruto/")
+archivos_procesados = Path("../datos/procesados/")
+archivo_final = Path("../datos/procesados/") / f"resumen_{fecha_hoy:%b-%d-%Y}.csv"
 ```
 
 
 ```python
-df = pd.read_csv(archivo)
-
-df.head()
+archivo = archivos_en_bruto / 'REEMPLAZA_ESTO_CON_EL_NOMBRE_DE_TU_ARCHIVO'
 ```
 
 
+```python
+# Leer y describir el conjunto de datos.
+datos = pd.read_csv(archivo)
+
+print("-"*25)
+print(f"{datos.shape[0]} filas, {datos.shape[1]} columnas.")
+print("-"*25)
+datos.describe()
+print("-"*25)
+datos.head()
+```
+
+###### En el de visualizaciones tienes `cells` como:
 ```python
 titulo_1 = "Título del Gráfico"
 
